@@ -18,8 +18,9 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import { Button } from "@/components/ui/button"
+import { JSX, SVGProps } from "react"
 
-export function flashcard() {
+export default function Flashcard() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-background">
       <div className="max-w-md w-full p-6 bg-card rounded-lg shadow-lg">
@@ -51,7 +52,7 @@ export function flashcard() {
   )
 }
 
-function ArrowRightIcon(props) {
+function ArrowRightIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -72,7 +73,7 @@ function ArrowRightIcon(props) {
 }
 
 
-function RefreshCwIcon(props) {
+function RefreshCwIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -95,7 +96,7 @@ function RefreshCwIcon(props) {
 }
 
 
-function ThumbsDownIcon(props) {
+function ThumbsDownIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -116,7 +117,7 @@ function ThumbsDownIcon(props) {
 }
 
 
-function ThumbsUpIcon(props) {
+function ThumbsUpIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -137,7 +138,7 @@ function ThumbsUpIcon(props) {
 }
 
 
-function XIcon(props) {
+function XIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
