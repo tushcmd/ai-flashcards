@@ -1,5 +1,5 @@
 
-import Flashcard from '../components/component/flashcard';
+import Flashcard from '../components/flash-card';
 
 export default function Home() {
   return (
