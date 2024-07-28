@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from '@/lib/utils'
 import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
+import ModalProvider from "@/components/modals/modal-providers";
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -38,7 +39,7 @@ export default function RootLayout({
           fontBody.variable
         )}
       >
-        {children}
+        <ModalProvider>{children}</ModalProvider>
         <Toaster />
       </body>
     </html>

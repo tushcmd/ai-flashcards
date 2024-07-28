@@ -1,10 +1,14 @@
-import React, { FC } from 'react';
+'use client'
+
+import React, { FC, useContext } from 'react';
 // import ThemeSwitcherButton from '../ui/ThemeSwitcher';
 import Logo from './logo';
 import { Button } from '../ui/button';
 import { ArrowRight } from 'lucide-react';
+import { ModalContext } from "@/components/modals/modal-providers";
 
 const Navbar: FC = () => {
+    const { setShowSignInModal } = useContext(ModalContext);
     return (
         <nav className="py-4">
             <div className="layout-container flex justify-between items-center border-b py-1">
@@ -13,7 +17,7 @@ const Navbar: FC = () => {
                 <Button
                     variant="default"
                     size="sm"
-                // onClick={() => setShowSignInModal(true)}
+                    onClick={() => setShowSignInModal(true)}
                 >
                     <span>Sign In</span>
                     <ArrowRight className="size-4" />
