@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'antialiased',
+          'min-h-screen antialiased',
           fontHeading.variable,
           fontBody.variable
         )}

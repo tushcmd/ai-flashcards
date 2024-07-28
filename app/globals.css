@@ -77,3 +77,14 @@
     @apply font-heading;
   }
 }
+
+/* LAYOUTS  */
+@layer components {
+  .layout-container {
+    @apply container mx-auto max-w-5xl px-5;
+  }
+
+  .page-container {
+    @apply layout-container flex flex-col gap-16 py-20;
+  }
+}
