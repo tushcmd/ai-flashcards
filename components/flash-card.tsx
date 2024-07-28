@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RefreshCw, ArrowRight } from "lucide-react"
 import { useState } from "react"
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
 
 interface Flashcard {
     question: string
@@ -43,13 +45,28 @@ export default function Flashcard() {
             setFlashcards(data)
             setCurrentIndex(0)
             setFlip(false)
+
         } catch (error) {
+            toast({
+                variant: "destructive",
+                title: "Uh oh! Something went wrong.",
+                description: "There was a problem generating flashcards.",
+                action: (
+                    <ToastAction altText="Try again" onClick={handleGenerateFlashcards}>
+                        Try again
+                    </ToastAction>
+                ),
+            })
             console.error('Error generating flashcards:', error)
         } finally {
             setLoading(false)
         }
     }
+
+
     const currentCard = flashcards[currentIndex]
+
+    const { toast } = useToast()
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
