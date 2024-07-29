@@ -11,8 +11,9 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
-import { siteConfig } from "@/config/site";
-import { Loader, WalletCards } from "lucide-react";
+
+import { Loader } from "lucide-react";
+
 
 
 function SignInModal({
@@ -28,10 +29,11 @@ function SignInModal({
         <Modal showModal={showSignInModal} setShowModal={setShowSignInModal}>
             <div className="w-full">
                 <div className="flex flex-col items-center justify-center space-y-3 border-b bg-background px-4 py-6 pt-8 text-center md:px-16">
-                    <a href={siteConfig.url}>
-                        <WalletCards className="size-10" />
-                    </a>
-                    <h3 className="font-urban text-2xl font-bold">Sign In</h3>
+
+                    <h3 className="font-urban text-xl font-bold">Sign In</h3>
+                    <p className="text-sm">
+                        Sign in with your Google account.
+                    </p>
 
                 </div>
 
