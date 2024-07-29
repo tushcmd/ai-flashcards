@@ -1,10 +1,12 @@
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation"; // Import useRouter
 import {
     Dispatch,
     JSX,
     SetStateAction,
     SVGProps,
     useCallback,
+    useEffect,
     useMemo,
     useState,
 } from "react";
@@ -24,6 +26,33 @@ function SignInModal({
     setShowSignInModal: Dispatch<SetStateAction<boolean>>;
 }) {
     const [signInClicked, setSignInClicked] = useState(false);
+    const router = useRouter(); // Use the router
+    const { data: session, status } = useSession(); // Get session data
+
+    useEffect(() => {
+        if (status === "authenticated" && session) {
+            // Redirect to /generate if user is authenticated
+            router.push("/generate");
+        }
+    }, [session, status, router]);
+
+
+    const handleSignIn = async () => {
+        setSignInClicked(true);
+        try {
+            const result = await signIn("google", { redirect: false });
+            if (result?.error) {
+                console.error("Sign in error:", result.error);
+                setSignInClicked(false);
+            } else {
+                // Successful sign-in will trigger the useEffect above
+                setTimeout(() => setShowSignInModal(false), 400);
+            }
+        } catch (error) {
+            console.error("Sign in error:", error);
+            setSignInClicked(false);
+        }
+    };
 
     return (
         <Modal showModal={showSignInModal} setShowModal={setShowSignInModal}>
@@ -41,14 +70,7 @@ function SignInModal({
                     <Button
                         variant="default"
                         disabled={signInClicked}
-                        onClick={() => {
-                            setSignInClicked(true);
-                            signIn("google", { redirect: false }).then(() =>
-                                setTimeout(() => {
-                                    setShowSignInModal(false);
-                                }, 400),
-                            );
-                        }}
+                        onClick={handleSignIn}
                     >
                         {signInClicked ? (
                             <Loader className="mr-2 size-4 animate-spin" />
