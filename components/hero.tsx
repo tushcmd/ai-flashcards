@@ -5,8 +5,20 @@ import { Button } from "./ui/button";
 import { ModalContext } from "@/components/modals/modal-providers";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function Hero() {
     const { setShowSignInModal } = useContext(ModalContext);
+    const { data: session, status } = useSession(); // Get session data
+    const router = useRouter(); // Use the router
+
+    const handleAction = () => {
+        if (session) {
+            router.push('/generate');
+        } else {
+            setShowSignInModal(true);
+        }
+    };
 
     return (
         <div className="layout-container mt-16 mx-auto pb-4 px-4 sm:px-8 min-h-screen">
@@ -29,9 +41,9 @@ export default function Hero() {
                 </Button>
                 <Button
                     variant="default"
-                    onClick={() => setShowSignInModal(true)}
+                    onClick={handleAction}
                 >
-                    <span>Get Started</span>
+                    <span>{session ? "Generate Flashcards" : "Get Started"}</span>
                     <ArrowRight className="size-4" />
                 </Button>
             </div>
