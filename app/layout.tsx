@@ -6,6 +6,9 @@ import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import ModalProvider from "@/components/modals/modal-providers";
 import { ThemeProvider } from 'next-themes'
+import Navbar from "@/components/shared/nav";
+import Footer from "@/components/shared/footer";
+import { SessionProvider } from "next-auth/react";
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -40,15 +43,21 @@ export default function RootLayout({
           fontBody.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ModalProvider>{children}</ModalProvider>
-        </ThemeProvider>
-        <Toaster />
+        <SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ModalProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </ModalProvider>
+            <Toaster />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
