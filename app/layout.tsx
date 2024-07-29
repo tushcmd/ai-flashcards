@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import './globals.css'
 import { Toaster } from "@/components/ui/toaster"
 import ModalProvider from "@/components/modals/modal-providers";
+import { ThemeProvider } from 'next-themes'
 
 const fontHeading = Inter({
   subsets: ['latin'],
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           'min-h-screen antialiased',
@@ -39,7 +40,14 @@ export default function RootLayout({
           fontBody.variable
         )}
       >
-        <ModalProvider>{children}</ModalProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ModalProvider>{children}</ModalProvider>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>
