@@ -11,6 +11,7 @@ export const siteConfig: SiteConfig = {
   links: {
     twitter: "https://twitter.com/00tush_",
     github: "https://github.com/tushcmd/ai-flashcards",
+    portfolio: "https://tushdev.co",
   },
   mailSupport: "support@saas-starter.com",
 };

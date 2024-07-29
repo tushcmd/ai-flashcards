@@ -1,11 +1,12 @@
 export type SiteConfig = {
-    name: string;
-    description: string;
-    url: string;
-    ogImage: string;
-    mailSupport: string;
-    links: {
-      twitter: string;
-      github: string;
-    };
+  name: string;
+  description: string;
+  url: string;
+  ogImage: string;
+  mailSupport: string;
+  links: {
+    twitter: string;
+    github: string;
+    portfolio: string;
   };
+};
