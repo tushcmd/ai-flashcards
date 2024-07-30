@@ -13,5 +13,5 @@ export const siteConfig: SiteConfig = {
     github: "https://github.com/tushcmd/ai-flashcards",
     portfolio: "https://tushdev.co",
   },
-  mailSupport: "support@saas-starter.com",
+  mailSupport: "muturidavid854@gmail.com",
 };
