@@ -21,7 +21,6 @@ const Footer: FC = () => {
                         <Github className="size-5" />
                     </a>
                     <ThemeSwitcher />
-                    {/* <ThemeSwitcherButton /> */}
                 </div>
             </div>
         </footer>

@@ -32,7 +32,7 @@ export default function Flashcard() {
     }
 
     async function handleGenerateFlashcards() {
-        setLoading(true)
+        setLoading(true);
         try {
             const response = await fetch("/api/generate-flashcards", {
                 method: "POST",
@@ -40,11 +40,17 @@ export default function Flashcard() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({ topic }),
-            })
-            const data: Flashcard[] = await response.json()
-            setFlashcards(data)
-            setCurrentIndex(0)
-            setFlip(false)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data: Flashcard[] = await response.json();
+            console.log(data);
+            setFlashcards(data);
+            setCurrentIndex(0);
+            setFlip(false);
 
         } catch (error) {
             toast({
@@ -56,10 +62,10 @@ export default function Flashcard() {
                         Try again
                     </ToastAction>
                 ),
-            })
-            console.error('Error generating flashcards:', error)
+            });
+            console.error('Error generating flashcards:', error);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     }
 
