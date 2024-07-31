@@ -1,17 +1,37 @@
+'use client'
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Check } from "lucide-react"
+import { useState } from 'react'
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
+
+
 
 export default function PricingSection() {
+
+
+    const [isYearly, setIsYearly] = useState(false);
     return (
         <section className="layout-container mt-16 mx-auto pb-4 px-4 sm:px-8">
             <div className="container grid items-center justify-center gap-12 px-4 md:px-6">
                 <div className="space-y-3 text-center">
-                    <h2 className="font-bold text-2xl md:text-3xl">Pricing for Every Need</h2>
+                    <h2 className="text-2xl md:text-3xl">Pricing for Every Need</h2>
                     <p className="mx-auto leading-relaxed max-w-3xl text-muted-foreground">
                         Choose the plan that fits your learning style and budget. Get started with our free Basic plan or unlock
                         more features with our Pro and Enterprise options.
                     </p>
+                </div>
+
+                <div className="flex items-center justify-center space-x-2">
+                    <Label htmlFor="biiling-toggle">Monthly</Label>
+                    <Switch
+                        id="biiling-toggle"
+                        checked={isYearly}
+                        onCheckedChange={setIsYearly}
+                    />
+                    <Label htmlFor="biiling-toggle">Yearly</Label>
                 </div>
                 <div className="grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     <PricingCard
@@ -29,7 +49,8 @@ export default function PricingSection() {
                     <PricingCard
                         title="Pro"
                         description="Unlock more features for serious learners."
-                        price="$9/mo"
+                        //price="$9/mo"
+                        price={isYearly ? "$90/year" : "$9/mo"}
                         features={[
                             "Unlimited flashcards",
                             "Advanced study modes",
