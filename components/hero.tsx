@@ -20,14 +20,16 @@ export default function Hero() {
         }
     };
 
+    //  md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed
+    // md:min-h-screen
     return (
-        <div className="layout-container mt-16 mx-auto pb-4 px-4 sm:px-8 min-h-screen">
+        <div className="layout-container mt-16 mx-auto pb-4 px-4 sm:px-8">
             <div className="text-center space-y-4">
-                <h1 className="font-bold text-3xl md:text-4xl">
+                <h1 className="text-3xl md:text-4xl">
                     Optimize your study with <br />
-                    <span className=""> Flash cards</span>
+                    <span className="font-bold"> Flash cards</span>
                 </h1>
-                <p className="mx-auto leading-relaxed max-w-3xl">
+                <p className="mx-auto leading-relaxed max-w-3xl text-muted-foreground">
                     It is established that concepts stick better with quick revision questions. Our flash cards offer you the best experience when revising in whichever topics.
                 </p>
             </div>
