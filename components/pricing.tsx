@@ -14,7 +14,7 @@ export default function PricingSection() {
 
     const [isYearly, setIsYearly] = useState(false);
     return (
-        <section className="layout-container mt-16 mx-auto pb-4 px-4 sm:px-8">
+        <section id="pricing" className="layout-container my-16 mx-auto pb-4 px-4 sm:px-8">
             <div className="container grid items-center justify-center gap-12 px-4 md:px-6">
                 <div className="space-y-3 text-center">
                     <h2 className="text-2xl md:text-3xl">Pricing for Every Need</h2>

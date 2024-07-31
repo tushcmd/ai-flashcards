@@ -5,7 +5,7 @@
 import Hero from '@/components/hero';
 import PricingSection from '@/components/pricing';
 
-
+// className='page-container
 export default function Home() {
     return (
         <div >
